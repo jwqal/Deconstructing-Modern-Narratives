@@ -1,0 +1,282 @@
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturing Consent on the Margins | A Media Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f5f0e1;
+            --text-color: #433d3c;
+            --accent-color: #a2673a;
+            --highlight-bg: #eaddc7;
+            --border-color: #dcd3b8;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lato', sans-serif;
+        }
+
+        .prose a {
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 2px solid var(--highlight-bg);
+            transition: background-color 0.3s;
+        }
+        
+        .prose a:hover {
+           background-color: var(--highlight-bg);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--accent-color);
+            transform-origin: 0%;
+            z-index: 50;
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1200x600/433d3c/f5f0e1?text=Media+Analysis');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .pull-quote {
+            text-align: center;
+            margin: 2.5rem auto;
+            max-width: 80%;
+            font-size: 1.4rem;
+            font-style: italic;
+            font-family: 'Merriweather', serif;
+            color: var(--accent-color);
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+        
+        .note-trigger {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-color);
+            border-bottom: 2px dotted var(--accent-color);
+        }
+        
+        .marginal-note {
+            display: none; /* Hidden by default on mobile */
+            padding: 0.75rem;
+            background-color: var(--highlight-bg);
+            border-left: 3px solid var(--accent-color);
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-family: 'Lato', sans-serif;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .marginal-note.is-active {
+            display: block;
+        }
+
+        @media (min-width: 1024px) {
+            .marginal-note {
+                display: block; /* Always visible on desktop */
+                background-color: transparent;
+                border: none;
+                margin: 0;
+                padding: 0;
+                border-radius: 0;
+                opacity: 0.3;
+                transition: opacity 0.4s ease-in-out;
+            }
+            .marginal-note.is-active {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Progress Bar -->
+    <div id="progressBar" class="progress-bar"></div>
+
+    <div class="container mx-auto px-4 sm:px-6">
+        
+        <!-- Header -->
+        <header class="py-6">
+            <div class="text-center">
+                <h2 class="text-xl font-bold tracking-wider">Critical Insights</h2>
+                <p class="text-sm text-gray-600">Deconstructing Modern Narratives</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <article>
+                <!-- Title and Hero Section -->
+                <div class="hero-section text-white rounded-lg p-8 md:p-20 mb-12 flex flex-col justify-center items-center text-center shadow-lg min-h-[40vh]">
+                    <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Manufacturing Consent on the Margins</h1>
+                    <p class="text-lg md:text-xl max-w-3xl">A Propaganda Model Analysis of Media Coverage of Bihar's Electoral Roll Revision</p>
+                </div>
+
+                <div class="lg:grid lg:grid-cols-3 lg:gap-12 max-w-6xl mx-auto">
+                    <!-- Main text column -->
+                    <div class="lg:col-span-2 prose max-w-none">
+                        <section class="mb-12">
+                            <h2 class="text-2xl font-bold mb-4">Introduction: The Representative Text and the Analytical Framework</h2>
+                            <p data-note-id="note1">In the politically charged landscape of India, the actions of the <span class="note-trigger" data-trigger-for="note1">Election Commission of India (ECI)</span>, a constitutionally mandated body, are subject to intense scrutiny. This report analyzes media coverage of Bihar's electoral roll revision through the lens of Edward S. Herman and Noam Chomsky's <span class="note-trigger" data-trigger-for="note2">Propaganda Model</span>. The model posits that news is shaped by five systemic filters: ownership, advertising, sourcing, flak, and dominant ideology. Which work to manufacture consent for the agendas of dominant state and corporate elites.</p>
+                            <div id="note1-content" class="marginal-note">The ECI is an autonomous constitutional authority responsible for administering election processes in India. Its independence is considered crucial for free and fair elections.</div>
+                            <div id="note2-content" class="marginal-note">A conceptual model in political economy that argues systemic biases in mass media, stemming from economic structures, shape news content to be favorable to established power.</div>
+
+                            <p data-note-id="note3">The representative text is an article from <span class="note-trigger" data-trigger-for="note3">The Hindu</span>, a prominent national "newspaper of record." This seemingly neutral, data-driven report on the procedural aspects of the revision is an ideal subject for deconstruction, as it reveals how ideological constraints operate not through overt propaganda but through subtle choices of framing, emphasis, and omission.</p>
+                            <div id="note3-content" class="marginal-note">A "newspaper of record" is a major newspaper that has a large circulation and whose editorial and news-gathering functions are considered authoritative and of high quality.</div>
+
+                            <p class="pull-quote">This report will reveal the "story not told"—the narrative of political conflict, potential mass disenfranchisement, and fear that is systematically marginalized in the mainstream coverage.</p>
+                        </section>
+                        
+                        <section class="mb-12">
+                            <h2 class="text-2xl font-bold mb-4">The Sanitized Narrative: Reporting Process, Obscuring Conflict</h2>
+                            <p data-note-id="note4">The SIR in Bihar was a deeply divisive political event. Opposition parties launched massive protests, framing the exercise as <a href="https://inc.in/congress-sandesh/national/revision-an-attempt-to-steal-bihar-election-like-maharashtra-shri-rahul-gandhi" target="_blank" rel="noopener noreferrer">"institutionalised <span class="note-trigger" data-trigger-for="note4">chori</span> [theft] to deny the poor their right to vote"</a>. There were widespread fears that the SIR was a "backdoor" <span class="note-trigger" data-trigger-for="note5">National Register of Citizens (NRC)</span>, an exercise that had created immense anxiety in the state of Assam.</p>
+                             <div id="note4-content" class="marginal-note">Hindi for "theft." By using this term, the opposition framed the administrative process not as a bureaucratic error, but as a deliberate, criminal act against voters.</div>
+                             <div id="note5-content" class="marginal-note">An official record of all legal citizens of India. A similar exercise in the state of Assam excluded nearly 2 million people, raising fears of statelessness for many, particularly minorities.</div>
+                            
+                            <p>None of this profound conflict is reflected in the chosen article. The article's focus on the <em>how</em> (the process) completely obscures the <em>why</em> (the battle over who gets to be a voter). This elevation of process over conflict serves to normalize a highly controversial state action.</p>
+                        </section>
+                        
+                        <section class="mb-12">
+                            <h2 class="text-3xl font-bold mb-6 text-center">Deconstructing the Narrative Through the Five Filters</h2>
+                            
+                            <div class="space-y-8">
+                                <h3 class="text-xl font-bold mb-2">1. The Ownership Filter: The Liberal Establishment's Cautious Gaze</h3>
+                                <p>As a "newspaper of record," The Hindu is invested in maintaining its reputation for sobriety and institutional respect. This creates a tension: its liberal leanings might align with critics, but its institutional imperative is to treat a body like the ECI with deference. This results in cautious, procedural coverage that avoids inflammatory language, ultimately affirming the state's narrative.</p>
+                                
+                                <h3 class="text-xl font-bold mb-2">2. The Advertising Filter: The Price of Dissent</h3>
+                                <p>The Indian government is a major advertiser and has a documented history of weaponizing its ad budget to punish critical media. A 2019 Reuters report noted that ad spending to The Hindu was frozen after critical coverage. This creates a powerful chilling effect. The path of least financial risk is to stick to the official script, a path the article follows meticulously.</p>
+
+                                <h3 class="text-xl font-bold mb-2">3. The Sourcing Filter: The Unquestioned Authority of the State</h3>
+                                <p>The article is built almost exclusively on information from the ECI. Official sources are granted an automatic presumption of neutrality. In contrast, the opposition's claims are treated as biased "political noise," and the lived experiences of ordinary citizens are considered anecdotal. This structural preference ensures the state's framing dominates.</p>
+
+                                <h3 class="text-xl font-bold mb-2" data-note-id="note6">4. The <span class="note-trigger" data-trigger-for="note6">Flak</span> Filter: The Shadow of Reprisal</h3>
+                                <p>In a context of shrinking press freedom, with journalists facing legal harassment, raids, and arrests, the anticipation of a ferocious backlash creates a powerful incentive for self-censorship. An entirely "safe" report that makes no independent claims and offers no critical analysis insulates the newspaper from the most severe forms of flak. The story is covered, but the controversy is contained.</p>
+                                <div id="note6-content" class="marginal-note">"Flak" refers to negative responses (lawsuits, social media campaigns, official sanctions) that media face for critical content. The anticipation of flak can lead to self-censorship.</div>
+
+                                <h3 class="text-xl font-bold mb-2">5. The Dominant Ideology Filter: The Sanctity of Bureaucratic Process</h3>
+                                <p>The story is framed by the ideology that "purifying" electoral rolls is a self-evidently good, apolitical task. Opposition is then delegitimized and framed as partisan actors defending "bogus voters" or "shielding infiltrators." The media's uncritical adoption of this frame manufactures consent for an exclusionary ideology by presenting the process as a value-neutral state function.</p>
+                            </div>
+                        </section>
+                        
+                        <section class="mb-12">
+                            <h2 class="text-2xl font-bold mb-4">The Story Not Told: Narratives of Exclusion and Fear</h2>
+                            <p>The sanitized narrative omits the profound political context: the fear that the SIR was a trial run for a nationwide NRC. Also silenced is the human dimension—the experiences of groups most at risk, like migrant labourers, women (disproportionately deleted from rolls after marriage), and the poor, who often lack the specific documents required.</p>
+                            <p class="pull-quote">The narrative of "vote theft"—a direct and explosive challenge to the legitimacy of the entire exercise—is the core of the political story. Its complete absence is a testament to the power of the propaganda model's filters.</p>
+                        </section>
+
+                        <section class="mb-12 bg-[var(--highlight-bg)] p-6 rounded-lg shadow-inner">
+                            <h2 class="text-2xl font-bold mb-4">Conclusion: A Tripartite Summary</h2>
+                            <ol class="list-decimal list-inside space-y-4">
+                                <li><strong>The Dominant Narrative:</strong> The media presented a neutral, efficient administrative process, portraying the ECI as a competent authority ensuring electoral "purity."</li>
+                                <li><strong>Crucial Omissions:</strong> The coverage systematically omitted the deep political controversy, fears of a "backdoor NRC," and the human cost of potential disenfranchisement.</li>
+                                <li><strong>Centered vs. Marginalized Voices:</strong> The state's voice (ECI) was amplified as objective fact, while the political opposition and impacted citizens were marginalized or silenced entirely.</li>
+                            </ol>
+                        </section>
+                    </div>
+
+                    <!-- Marginalia column for desktop -->
+                    <aside class="hidden lg:block relative">
+                        <div id="notes-container" class="sticky top-24 space-y-6">
+                            <!-- Notes will be populated by JS -->
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 mt-12 border-t border-[var(--border-color)]">
+            <p class="text-gray-600 text-sm">&copy; 2025 Critical Insights. An analysis based on the work of Herman & Chomsky.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Progress bar
+            const progressBar = document.getElementById('progressBar');
+            const updateProgressBar = () => {
+                const { scrollTop, scrollHeight } = document.documentElement;
+                const scrollPercent = (scrollTop / (scrollHeight - window.innerHeight)) * 100 + '%';
+                progressBar.style.width = scrollPercent;
+            };
+            document.addEventListener('scroll', updateProgressBar);
+
+            const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+            const notesContainer = document.getElementById('notes-container');
+            const noteTriggers = document.querySelectorAll('.note-trigger');
+
+            if (isDesktop) {
+                // --- DESKTOP LOGIC ---
+                // Move note content to the sidebar
+                const allNotes = {};
+                document.querySelectorAll('[data-note-id]').forEach(p => {
+                    const noteId = p.dataset.noteId;
+                    const noteContentEl = document.getElementById(`${noteId}-content`);
+                    if (noteContentEl) {
+                        const noteDiv = document.createElement('div');
+                        noteDiv.id = noteId;
+                        noteDiv.className = 'marginal-note';
+                        noteDiv.innerHTML = noteContentEl.innerHTML;
+                        notesContainer.appendChild(noteDiv);
+                        allNotes[noteId] = noteDiv;
+                        noteContentEl.remove(); // Remove original inline note
+                    }
+                });
+
+                // Intersection Observer to highlight notes on scroll
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        const id = entry.target.dataset.noteId;
+                        if (id && allNotes[id]) {
+                            if (entry.isIntersecting) {
+                                allNotes[id].classList.add('is-active');
+                            } else {
+                                allNotes[id].classList.remove('is-active');
+                            }
+                        }
+                    });
+                }, {
+                    rootMargin: '-40% 0px -40% 0px',
+                    threshold: 0
+                });
+
+                document.querySelectorAll('[data-note-id]').forEach(el => observer.observe(el));
+            } else {
+                // --- MOBILE LOGIC ---
+                // Add click listeners to toggle inline notes
+                noteTriggers.forEach(trigger => {
+                    const noteId = trigger.dataset.triggerFor;
+                    const noteContent = document.getElementById(`${noteId}-content`);
+                    if (noteContent) {
+                        trigger.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            noteContent.classList.toggle('is-active');
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
