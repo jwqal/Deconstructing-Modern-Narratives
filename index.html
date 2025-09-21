@@ -2,221 +2,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manufacturing Consent on the Margins: A Propaganda Model Analysis</title>
+    <title>Manufacturing Consent: Uncovering the Truth</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        @keyframes glitch {
-            2%, 64% { transform: translate(2px, 0) skew(0deg); }
-            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
-            62% { transform: translate(0, 0) skew(5deg); }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse-border {
+            0%, 100% { border-color: #00ff95; box-shadow: 0 0 15px rgba(0, 255, 149, 0.2); }
+            50% { border-color: #9effd9; box-shadow: 0 0 30px rgba(0, 255, 149, 0.5); }
+        }
+        @keyframes glitch-heavy {
+            2%,64%{ transform: translate(2px,0) skew(0deg); }
+            4%,60%{ transform: translate(-2px,0) skew(0deg); }
+            62%{ transform: translate(0,0) skew(5deg); }
+        }
+        @keyframes glitch-heavy-before {
+            0%,10%,12%,18%,20%,28%,30%,38%,40%,48%,50%,58%,60%,68%,70%,78%,80%,88%,90%,98%,100% { clip-path: inset(45% 0 50% 0); }
+            11%,19%,29%,39%,49%,59%,69%,79%,89%,99% { clip-path: inset(20% 0 70% 0); }
+        }
+        @keyframes glitch-heavy-after {
+             0%,10%,12%,18%,20%,28%,30%,38%,40%,48%,50%,58%,60%,68%,70%,78%,80%,88%,90%,98%,100% { clip-path: inset(60% 0 30% 0); }
+            11%,19%,29%,39%,49%,59%,69%,79%,89%,99% { clip-path: inset(40% 0 45% 0); }
         }
 
         body {
             font-family: 'Space Mono', monospace;
             background-color: #000000;
             color: #e0e0e0;
+            overflow-x: hidden;
         }
         ::selection {
             background-color: rgba(0, 255, 149, 0.3);
             color: #ffffff;
         }
-        .glitch {
-            position: relative;
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(ellipse at bottom, #0d2a2b 0%, #000000 70%);
+        }
+        .hero-title {
+            animation: fadeIn 2s ease-in-out;
             color: #00ff95;
             text-shadow: 0 0 8px rgba(0, 255, 149, 0.4);
-            animation: glitch 1s linear infinite;
         }
-        .glitch:before,
-        .glitch:after {
+        .hero-subtitle, .scroll-prompt {
+            animation: slideInUp 2s ease-in-out;
+        }
+        .scroll-prompt svg {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .section-card {
+            background-color: #0a0a0a;
+            border: 2px solid #00ff95;
+            box-shadow: 0 0 15px rgba(0, 255, 149, 0.15);
+            animation: pulse-border 5s infinite;
+        }
+
+        .flowchart-node {
+            border: 1px solid #00ff95;
+            background: #0a0a0a;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+        }
+        .flowchart-node.active {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 255, 149, 0.5);
+            opacity: 1;
+        }
+        .flowchart-connector {
+            height: 2px;
+            background: #00ff95;
+            width: 100%;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        .flowchart-node.active + .flowchart-connector {
+            opacity: 1;
+            box-shadow: 0 0 10px #00ff95;
+        }
+
+        .glitch-box {
+            border-color: #ff00c1;
+        }
+        .glitch-text {
+            color: #ff00c1;
+            text-shadow: 0 0 5px rgba(255, 0, 193, 0.5);
+            position: relative;
+        }
+        .glitch-text:before, .glitch-text:after {
             content: attr(data-text);
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: #0a0a0a;
+            overflow: hidden;
         }
-        .glitch:before {
+        .glitch-text:before {
             left: 2px;
-            text-shadow: -2px 0 #ff00c1;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
+            text-shadow: -2px 0 #00fff9;
+            animation: glitch-heavy-before 3s linear infinite alternate-reverse;
         }
-        .glitch:after {
+        .glitch-text:after {
             left: -2px;
-            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-            clip: rect(86px, 450px, 140px, 0);
-            animation: glitch-anim2 3s infinite linear alternate-reverse;
-        }
-        @keyframes glitch-anim {
-            0% { clip: rect(42px, 9999px, 44px, 0); transform: skew(0.3deg); }
-            100% { clip: rect(42px, 9999px, 44px, 0); transform: skew(0.2deg); }
-        }
-        @keyframes glitch-anim2 {
-            0% { clip: rect(80px, 9999px, 90px, 0); transform: skew(0.6deg); }
-            100% { clip: rect(80px, 9999px, 90px, 0); transform: skew(0.3deg); }
+            text-shadow: 2px 0 #ff00c1;
+            animation: glitch-heavy-after 3s linear infinite alternate-reverse;
         }
 
-        .accent-text {
+        .counter {
             color: #00ff95;
+            font-size: 2.5rem;
+            font-weight: 700;
         }
-        .section-card {
-            background-color: #0a0a0a;
-            border: 1px solid #00ff95;
-            box-shadow: 0 0 15px rgba(0, 255, 149, 0.15);
-            transition: all 0.3s ease-in-out;
-        }
-        .section-title h2 { color: #00ff95; }
-        .section-title svg { color: #00ff95; }
-        .content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.8s ease-in-out;
-        }
-        .content.open {
-           max-height: 5000px;
-        }
-        .scroll-target {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .scroll-target.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .accent-border { border-color: #00ff95 !important; }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Main Container -->
-    <div class="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
-        <header class="mb-12 text-center">
-            <h1 class="glitch text-4xl md:text-5xl font-bold leading-tight" data-text="Manufacturing Consent">Manufacturing Consent</h1>
-            <p class="mt-4 text-lg accent-text">A Propaganda Model Analysis of the Bihar Electoral Roll Revision</p>
-        </header>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1 class="hero-title text-5xl md:text-7xl font-bold" data-text="CONSENT: MANUFACTURED">CONSENT: MANUFACTURED</h1>
+        <p class="hero-subtitle mt-4 text-lg md:text-xl text-gray-300 max-w-2xl">The media told you a story about the Bihar voter list. It wasn't the whole story. Not even close.</p>
+        <div class="scroll-prompt absolute bottom-10 text-center text-gray-400">
+            <p>Scroll to uncover the truth</p>
+            <svg class="w-6 h-6 mx-auto mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </div>
 
-        <main class="space-y-6">
-            <!-- Introduction -->
-            <section class="scroll-target">
-                <div class="section-card rounded-lg">
-                    <div class="section-title cursor-pointer p-6 flex justify-between items-center">
-                        <h2 class="text-2xl font-bold">Introduction: The Setup</h2>
-                        <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
-                    <div class="content p-6 pt-0">
-                        <p>This analysis examines media coverage of the Bihar electoral roll revision through Herman and Chomsky's Propaganda Model. It argues that mainstream news, exemplified by a report from <em>The Hindu</em>, filtered a contentious political event into a mundane administrative story. This process manufactured public consent by omitting the core conflict and its human consequences.</p>
-                    </div>
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-16 md:py-24 max-w-4xl space-y-24">
+        
+        <!-- The Two Stories -->
+        <section class="space-y-8">
+            <h2 class="text-3xl font-bold text-center text-[#00ff95]">THE TWO STORIES</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- The Official Story -->
+                <div class="section-card rounded-lg p-6">
+                    <h3 class="text-2xl font-bold text-center text-white mb-4">THE OFFICIAL STORY</h3>
+                    <p class="text-gray-300">A necessary, apolitical process. The Election Commission of India (ECI) is simply "purifying" the voter rolls. It's about "data," "efficiency," and "integrity." A routine bureaucratic task.</p>
                 </div>
-            </section>
-            
-            <!-- Sanitized Narrative -->
-            <section class="scroll-target">
-                <div class="section-card rounded-lg">
-                    <div class="section-title cursor-pointer p-6 flex justify-between items-center">
-                        <h2 class="text-2xl font-bold">The Official Story vs. The Real Conflict</h2>
-                        <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
-                    <div class="content p-6 pt-0">
-                        <p class="mb-4">The media presented a sanitized narrative that obscured a deeply divisive political battle.</p>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="border-l-2 accent-border pl-3">
-                                <h3 class="font-bold text-white">The Media Narrative</h3>
-                                <p class="text-gray-400">A routine, data-driven update to "purify" electoral rolls, managed efficiently by the Election Commission of India (ECI).</p>
-                            </div>
-                            <div class="border-l-2 accent-border pl-3">
-                                <h3 class="font-bold text-white">The Ground Reality</h3>
-                                <p class="text-gray-400">An explosive political conflict, with opposition-led mass protests framing the exercise as "institutional vote theft" and a "backdoor NRC" to disenfranchise the poor.</p>
-                            </div>
-                        </div>
-                    </div>
+                <!-- The Hidden Reality -->
+                <div class="section-card rounded-lg p-6 glitch-box">
+                    <h3 class="glitch-text text-2xl font-bold text-center mb-4" data-text="THE HIDDEN REALITY">THE HIDDEN REALITY</h3>
+                    <p class="text-gray-300">An act of "institutional vote theft." Mass protests led by the opposition. Widespread fear of a "backdoor NRC" designed to disenfranchise millions of the poor, migrants, and women.</p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- 5 Filters -->
-            <section class="scroll-target">
-                <div class="section-card rounded-lg">
-                    <div class="section-title cursor-pointer p-6 flex justify-between items-center">
-                        <h2 class="text-2xl font-bold">How the Narrative Was Shaped: The 5 Filters</h2>
-                        <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
-                    <div class="content p-6 pt-0 space-y-5">
-                        <div>
-                            <h3 class="text-xl font-bold text-white">1. Ownership & Institutional Role</h3>
-                            <p class="text-gray-400">As a "newspaper of record," <em>The Hindu</em> has an institutional pressure to appear sober and respect official bodies. This cautious stance leads to reporting the state's version of events as the primary news, even if the paper's liberal ideology might align with critics.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">2. Advertising Revenue</h3>
-                            <p class="text-gray-400">The government is a primary source of advertising revenue and has a documented history of pulling ads from critical media outlets. This financial pressure creates a "chilling effect," incentivizing outlets to produce "safe," uncritical content on sensitive government-backed issues.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">3. Sourcing of Information</h3>
-                            <p class="text-gray-400">The news story was built almost exclusively on information from the ECI. Official sources are seen as easy and credible, while the voices of protestors and affected citizens are marginalized as "biased" or anecdotal. This ensures the state's perspective dominates.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">4. "Flak" (Anticipated Backlash)</h3>
-                            <p class="text-gray-400">In a climate of shrinking press freedom, critical reporting can trigger severe backlash, including legal harassment, raids, and online attacks. Anticipating this flak promotes self-censorship, leading to coverage that avoids direct challenges to powerful institutions.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">5. Dominant Ideology</h3>
-                            <p class="text-gray-400">The reporting was framed by the ideology that bureaucratic processes are inherently neutral and good. This makes the "purification" of voter rolls seem like a necessary, apolitical task, automatically delegitimizing anyone who opposes it as being against order and integrity.</p>
-                        </div>
-                    </div>
+        <!-- Propaganda Flowchart -->
+        <section class="space-y-8">
+            <h2 class="text-3xl font-bold text-center text-[#00ff95] mb-12">THE PROPAGANDA PIPELINE</h2>
+            <div class="space-y-4" id="flowchart">
+                <!-- Node 1: Ownership -->
+                <div class="flowchart-node rounded-lg p-6" data-step="1">
+                    <h3 class="text-xl font-bold text-white">1. OWNERSHIP: The Gatekeepers</h3>
+                    <p class="text-gray-400 mt-2">Legacy media, as "newspapers of record," must appear respectable. This institutional pressure forces caution and deference to official bodies, killing critical stories before they're even written.</p>
                 </div>
-            </section>
+                <div class="flowchart-connector mx-auto w-1/2"></div>
+                <!-- Node 2: Advertising -->
+                <div class="flowchart-node rounded-lg p-6" data-step="2">
+                    <h3 class="text-xl font-bold text-white">2. ADVERTISING: The Paymasters</h3>
+                    <p class="text-gray-400 mt-2">The government is a massive advertiser. Critical coverage gets punished by pulling ads, a financial threat that ensures the media toes the line on sensitive issues. Money silences dissent.</p>
+                </div>
+                <div class="flowchart-connector mx-auto w-1/2"></div>
+                <!-- Node 3: Sourcing -->
+                <div class="flowchart-node rounded-lg p-6" data-step="3">
+                    <h3 class="text-xl font-bold text-white">3. SOURCING: The Official Megaphone</h3>
+                    <p class="text-gray-400 mt-2">It's faster and safer to quote the ECI press release than to interview disenfranchised citizens. The state's voice is amplified; the people's voices are silenced. The official story becomes the only story.</p>
+                </div>
+                <div class="flowchart-connector mx-auto w-1/2"></div>
+                <!-- Node 4: Flak -->
+                <div class="flowchart-node rounded-lg p-6" data-step="4">
+                    <h3 class="text-xl font-bold text-white">4. FLAK: The Consequences</h3>
+                    <p class="text-gray-400 mt-2">Journalists who push back face raids, lawsuits, and harassment campaigns. This climate of fear leads to self-censorship. The risk of telling the truth is too high.</p>
+                </div>
+                <div class="flowchart-connector mx-auto w-1/2"></div>
+                <!-- Node 5: Ideology -->
+                <div class="flowchart-node rounded-lg p-6" data-step="5">
+                    <h3 class="text-xl font-bold text-white">5. IDEOLOGY: The Justification</h3>
+                    <p class="text-gray-400 mt-2">The media reinforces the belief that bureaucracy is a neutral good. This frames the voter roll "purification" as a noble cause, and its critics as enemies of a fair system.</p>
+                </div>
+            </div>
+        </section>
 
-            <!-- Human Cost -->
-            <section class="scroll-target">
-                <div class="section-card rounded-lg">
-                    <div class="section-title cursor-pointer p-6 flex justify-between items-center">
-                        <h2 class="text-2xl font-bold">The Unreported Story: The Human Cost</h2>
-                        <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
-                    <div class="content p-6 pt-0">
-                        <p class="mb-4">The media's procedural focus erased the stories of those most at risk of losing their right to vote:</p>
-                        <ul class="list-disc list-inside space-y-2 text-gray-300">
-                            <li><strong class="text-white">Migrant Labourers:</strong> Unable to return for in-person verification, millions of Bihari workers in other states risked being disenfranchised.</li>
-                            <li><strong class="text-white">Women:</strong> Often removed from rolls after marriage due to patriarchal norms and bureaucratic hurdles, a systemic gender bias ignored in top-line reports.</li>
-                            <li><strong class="text-white">The Poor & Marginalized:</strong> Lacking specific, often archaic, documents to prove their identity, they faced the highest barrier to staying on the voter list.</li>
-                        </ul>
-                    </div>
+        <!-- The Human Cost -->
+        <section class="space-y-8">
+            <h2 class="text-3xl font-bold text-center text-[#00ff95] mb-12">THE HUMAN COST</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="counter" data-target="10">0</div>
+                    <h3 class="text-xl font-bold text-white mt-2">Million+ Migrants</h3>
+                    <p class="text-gray-400">At risk of losing their vote because they couldn't return home for verification.</p>
                 </div>
-            </section>
-        </main>
+                <div>
+                    <div class="counter" data-target="700">0</div>
+                    <h3 class="text-xl font-bold text-white mt-2">Thousand+ Women</h3>
+                    <p class="text-gray-400">Disproportionately deleted from voter rolls after marriage, a systemic bias.</p>
+                </div>
+                <div>
+                    <div class="counter" data-target="99">0</div>
+                    <h3 class="text-xl font-bold text-white mt-2">Percent of Poor</h3>
+                    <p class="text-gray-400">Lacking specific documents, they face the highest hurdles to prove their right to vote.</p>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const sections = document.querySelectorAll('.section-title');
-            sections.forEach(section => {
-                section.addEventListener('click', () => {
-                    const content = section.nextElementSibling;
-                    const icon = section.querySelector('svg');
-                    content.classList.toggle('open');
-                    icon.classList.toggle('rotate-180');
-                });
-            });
-
-            if (sections.length > 0) {
-                const firstContent = sections[0].nextElementSibling;
-                const firstIcon = sections[0].querySelector('svg');
-                firstContent.classList.add('open');
-                firstIcon.classList.add('rotate-180');
-            }
-
+            // Flowchart animation on scroll
+            const flowchartNodes = document.querySelectorAll('.flowchart-node');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        const step = entry.target.dataset.step;
+                        flowchartNodes.forEach(node => {
+                            if (node.dataset.step <= step) {
+                                node.classList.add('active');
+                            } else {
+                                node.classList.remove('active');
+                            }
+                        });
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.8 });
 
-            document.querySelectorAll('.scroll-target').forEach(target => {
-                observer.observe(target);
+            flowchartNodes.forEach(node => {
+                observer.observe(node);
+            });
+
+            // Counter animation
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200; // The lower the slower
+
+            const counterObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const counter = entry.target;
+                        const animate = () => {
+                            const target = +counter.getAttribute('data-target');
+                            const count = +counter.innerText.replace(/,/g, '');
+                            const inc = target / speed;
+
+                            if (count < target) {
+                                counter.innerText = Math.ceil(count + inc).toLocaleString();
+                                setTimeout(animate, 10);
+                            } else {
+                                if (counter.dataset.target === "10") counter.innerText = "10 Million+";
+                                if (counter.dataset.target === "700") counter.innerText = "700k+";
+                                if (counter.dataset.target === "99") counter.innerText = "Countless";
+                            }
+                        };
+                        animate();
+                        counterObserver.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counters.forEach(counter => {
+                counterObserver.observe(counter);
             });
         });
     </script>
