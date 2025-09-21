@@ -1,87 +1,224 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manufacturing Consent on the Margins | A Propaganda Model Analysis</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Manufacturing Consent on the Margins: A Propaganda Model Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px, 0) skew(0deg); }
+            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+            62% { transform: translate(0, 0) skew(5deg); }
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: #000000;
+            color: #e0e0e0;
+        }
+        ::selection {
+            background-color: rgba(0, 255, 149, 0.3);
+            color: #ffffff;
+        }
+        .glitch {
+            position: relative;
+            color: #00ff95;
+            text-shadow: 0 0 8px rgba(0, 255, 149, 0.4);
+            animation: glitch 1s linear infinite;
+        }
+        .glitch:before,
+        .glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch:before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch:after {
+            left: -2px;
+            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+            clip: rect(86px, 450px, 140px, 0);
+            animation: glitch-anim2 3s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(42px, 9999px, 44px, 0); transform: skew(0.3deg); }
+            100% { clip: rect(42px, 9999px, 44px, 0); transform: skew(0.2deg); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(80px, 9999px, 90px, 0); transform: skew(0.6deg); }
+            100% { clip: rect(80px, 9999px, 90px, 0); transform: skew(0.3deg); }
+        }
+
+        .accent-text {
+            color: #00ff95;
+        }
+        .section-card {
+            background-color: #0a0a0a;
+            border: 1px solid #00ff95;
+            box-shadow: 0 0 15px rgba(0, 255, 149, 0.15);
+            transition: all 0.3s ease-in-out;
+        }
+        .section-title h2 { color: #00ff95; }
+        .section-title svg { color: #00ff95; }
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease-in-out;
+        }
+        .content.open {
+           max-height: 5000px;
+        }
+        .scroll-target {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-target.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .accent-border { border-color: #00ff95 !important; }
+    </style>
 </head>
-<body>
-    <main class="container">
-        <header>
-            [span_0](start_span)<h1>Manufacturing Consent on the Margins: A Propaganda Model Analysis of Media Coverage of Bihar's Electoral Roll Revision[span_0](end_span)</h1>
-            [span_1](start_span)<p class="subtitle">The Official Story - An Exercise in Electoral Purity[span_1](end_span)</p>
+<body class="antialiased">
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
+        <header class="mb-12 text-center">
+            <h1 class="glitch text-4xl md:text-5xl font-bold leading-tight" data-text="Manufacturing Consent">Manufacturing Consent</h1>
+            <p class="mt-4 text-lg accent-text">A Propaganda Model Analysis of the Bihar Electoral Roll Revision</p>
         </header>
 
-        <article>
-            <h2>Introduction: The Representative Text and the Analytical Framework</h2>
-            [span_2](start_span)<p>In the politically charged landscape of India, the actions of the Election Commission of India (ECI), a constitutionally mandated body, are subject to intense scrutiny.[span_2](end_span) [span_3](start_span)Ahead of the Bihar assembly elections, the ECI initiated a Special Intensive Revision (SIR) of the state's electoral rolls, a process that immediately became a flashpoint of national controversy.[span_3](end_span) [span_4](start_span)This report undertakes a critical analysis of the mainstream media's coverage of this event through the lens of Edward S. Herman and Noam Chomsky's Propaganda Model.[span_4](end_span) [span_5](start_span)The model posits that in a democratic society, news is shaped by five systemic filters—ownership, advertising, sourcing, flak, and dominant ideology—which work to manufacture consent for the agendas of dominant state and corporate elites.[span_5](end_span) [span_6](start_span)The representative text chosen for this analysis is the article titled "Election Commission gets close to 2 lakh requests to remove names from Bihar voters' list," published by The Hindu on August 31, 2025.[span_6](end_span) [span_7](start_span)This article serves as an exemplary case study for several reasons.[span_7](end_span) [span_8](start_span)The Hindu is a prominent national "newspaper of record," lending its coverage an air of authority and objectivity.[span_8](end_span) [span_9](start_span)The article itself is framed as a factual, data-driven report, focusing on the procedural and statistical aspects of the SIR.[span_9](end_span) [span_10](start_span)This seemingly neutral presentation makes it an ideal subject for deconstruction, as it reveals how ideological constraints operate not through overt propaganda but through subtle choices of framing, emphasis, and omission.[span_10](end_span) [span_11](start_span)The surface narrative of the article is straightforward and administrative.[span_11](end_span) [span_12](start_span)It reports that the ECI has received over 1.97 lakh requests for the exclusion of names from the Bihar voters' list and 29,872 requests for inclusion.[span_12](end_span) [span_13](start_span)It further notes that 99.11% of the state's 7.24 crore electors have submitted their documents for verification.[span_13](end_span) [span_14](start_span)The story, as presented, is one of a large-scale bureaucratic task being managed with apparent efficiency by a competent state institution.[span_14](end_span) [span_15](start_span)The numbers are positioned as the key takeaways, indicators of a functioning, responsive process.[span_15](end_span) [span_16](start_span)This report will deconstruct this sanitized narrative by applying the five filters of the Propaganda Model.[span_16](end_span) [span_17](start_span)It will analyze the economic and political interests of the newspaper's ownership, the pressures exerted by advertising revenue, the structural biases in sourcing information, the anticipated negative consequences (flak) of critical reporting, and the dominant ideological framework used to make sense of the events.[span_17](end_span) [span_18](start_span)Through this systematic analysis, the report will reveal the "story not told"—the narrative of political conflict, potential mass disenfranchisement, and fear that is systematically marginalized in the mainstream coverage.[span_18](end_span)</p>
+        <main class="space-y-6">
+            <!-- Introduction -->
+            <section class="scroll-target">
+                <div class="section-card rounded-lg">
+                    <div class="section-title cursor-pointer p-6 flex justify-between items-center">
+                        <h2 class="text-2xl font-bold">Introduction: The Setup</h2>
+                        <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="content p-6 pt-0">
+                        <p>This analysis examines media coverage of the Bihar electoral roll revision through Herman and Chomsky's Propaganda Model. It argues that mainstream news, exemplified by a report from <em>The Hindu</em>, filtered a contentious political event into a mundane administrative story. This process manufactured public consent by omitting the core conflict and its human consequences.</p>
+                    </div>
+                </div>
+            </section>
             
-            <hr>
+            <!-- Sanitized Narrative -->
+            <section class="scroll-target">
+                <div class="section-card rounded-lg">
+                    <div class="section-title cursor-pointer p-6 flex justify-between items-center">
+                        <h2 class="text-2xl font-bold">The Official Story vs. The Real Conflict</h2>
+                        <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="content p-6 pt-0">
+                        <p class="mb-4">The media presented a sanitized narrative that obscured a deeply divisive political battle.</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="border-l-2 accent-border pl-3">
+                                <h3 class="font-bold text-white">The Media Narrative</h3>
+                                <p class="text-gray-400">A routine, data-driven update to "purify" electoral rolls, managed efficiently by the Election Commission of India (ECI).</p>
+                            </div>
+                            <div class="border-l-2 accent-border pl-3">
+                                <h3 class="font-bold text-white">The Ground Reality</h3>
+                                <p class="text-gray-400">An explosive political conflict, with opposition-led mass protests framing the exercise as "institutional vote theft" and a "backdoor NRC" to disenfranchise the poor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            [span_19](start_span)<h2>The Sanitized Narrative: Reporting Process, Obscuring Conflict[span_19](end_span)</h2>
-            [span_20](start_span)<p>The structure and tone of the representative article from The Hindu are instrumental in constructing a particular version of reality.[span_20](end_span) [span_21](start_span)The report is built almost entirely upon information provided by the Election Commission of India.[span_21](end_span) [span_22](start_span)The lead sentence immediately establishes the ECI as the sole authoritative source: "The Election Commission of India (ECI) said on Saturday (August 30, 2025) that it had received more than 1.97 lakh requests from individuals to exclude names from the voters' list in Bihar...".[span_22](end_span) [span_23](start_span)This sets a tone of officialdom and procedural regularity.[span_23](end_span) [span_24](start_span)The narrative that follows is a recitation of statistics: numbers of claims filed, objections received, and documents submitted.[span_24](end_span) [span_25](start_span)This journalistic choice to prioritize bureaucratic minutiae is not a neutral act of reporting; it is a powerful act of framing.[span_25](end_span) [span_26](start_span)By defining the "story" as one of administrative process, the article effectively marginalizes the far more contentious and consequential story of political conflict and potential human rights violations.[span_26](end_span) [span_27](start_span)The SIR in Bihar was not a routine administrative update; it was a deeply divisive political event.[span_27](end_span) [span_28](start_span)Opposition parties, including the Congress and the Rashtriya Janata Dal (RJD), launched massive protests, framing the exercise as "institutionalised chori [theft] to deny the poor their right to vote".[span_28](end_span) [span_29](start_span)Leaders like Rahul Gandhi led a 'Vote Adhikar Yatra' (Right to Vote March) across the state, accusing the ECI of colluding with the ruling Bharatiya Janata Party (BJP).[span_29](end_span) [span_30](start_span)There were widespread fears that the SIR was a "backdoor" National Register of Citizens (NRC), an exercise that had created immense anxiety and the risk of statelessness for millions in the state of Assam.[span_30](end_span) [span_31](start_span)None of this profound conflict is reflected in the chosen article.[span_31](end_span) [span_32](start_span)The mention of "political parties" is generic and fleeting, noting only that their "booth-level agents have so far filed 25 claims regarding inclusion... and 103 on exclusion".[span_32](end_span) [span_33](start_span)This reduces their role from one of fundamental opposition to the entire process to that of minor participants in its procedural mechanics.[span_33](end_span) [span_34](start_span)The article's focus on the how (the process of filing forms) completely obscures the why (the deep political and ideological battle over who gets to be a voter).[span_34](end_span) [span_35](start_span)This elevation of process over conflict serves to normalize a highly controversial state action, presenting it to the public as a mundane, necessary, and competently managed affair.[span_35](end_span) [span_36](start_span)It is the first and most crucial step in manufacturing consent for the state's agenda, transforming a political battleground into a sterile bureaucratic landscape.[span_36](end_span)</p>
+            <!-- 5 Filters -->
+            <section class="scroll-target">
+                <div class="section-card rounded-lg">
+                    <div class="section-title cursor-pointer p-6 flex justify-between items-center">
+                        <h2 class="text-2xl font-bold">How the Narrative Was Shaped: The 5 Filters</h2>
+                        <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="content p-6 pt-0 space-y-5">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">1. Ownership & Institutional Role</h3>
+                            <p class="text-gray-400">As a "newspaper of record," <em>The Hindu</em> has an institutional pressure to appear sober and respect official bodies. This cautious stance leads to reporting the state's version of events as the primary news, even if the paper's liberal ideology might align with critics.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">2. Advertising Revenue</h3>
+                            <p class="text-gray-400">The government is a primary source of advertising revenue and has a documented history of pulling ads from critical media outlets. This financial pressure creates a "chilling effect," incentivizing outlets to produce "safe," uncritical content on sensitive government-backed issues.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">3. Sourcing of Information</h3>
+                            <p class="text-gray-400">The news story was built almost exclusively on information from the ECI. Official sources are seen as easy and credible, while the voices of protestors and affected citizens are marginalized as "biased" or anecdotal. This ensures the state's perspective dominates.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">4. "Flak" (Anticipated Backlash)</h3>
+                            <p class="text-gray-400">In a climate of shrinking press freedom, critical reporting can trigger severe backlash, including legal harassment, raids, and online attacks. Anticipating this flak promotes self-censorship, leading to coverage that avoids direct challenges to powerful institutions.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">5. Dominant Ideology</h3>
+                            <p class="text-gray-400">The reporting was framed by the ideology that bureaucratic processes are inherently neutral and good. This makes the "purification" of voter rolls seem like a necessary, apolitical task, automatically delegitimizing anyone who opposes it as being against order and integrity.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <hr>
+            <!-- Human Cost -->
+            <section class="scroll-target">
+                <div class="section-card rounded-lg">
+                    <div class="section-title cursor-pointer p-6 flex justify-between items-center">
+                        <h2 class="text-2xl font-bold">The Unreported Story: The Human Cost</h2>
+                        <svg class="w-6 h-6 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="content p-6 pt-0">
+                        <p class="mb-4">The media's procedural focus erased the stories of those most at risk of losing their right to vote:</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300">
+                            <li><strong class="text-white">Migrant Labourers:</strong> Unable to return for in-person verification, millions of Bihari workers in other states risked being disenfranchised.</li>
+                            <li><strong class="text-white">Women:</strong> Often removed from rolls after marriage due to patriarchal norms and bureaucratic hurdles, a systemic gender bias ignored in top-line reports.</li>
+                            <li><strong class="text-white">The Poor & Marginalized:</strong> Lacking specific, often archaic, documents to prove their identity, they faced the highest barrier to staying on the voter list.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
-            [span_37](start_span)<h2>Deconstructing the Narrative Through the Five Filters[span_37](end_span)</h2>
-            
-            [span_38](start_span)<h3>The Ownership Filter: The Liberal Establishment's Cautious Gaze[span_38](end_span)</h3>
-            [span_39](start_span)<p>The first filter in the Propaganda Model is the size, concentrated ownership, owner wealth, and profit orientation of the dominant mass-media firms.[span_39](end_span) [span_40](start_span)Understanding who owns the news outlet provides a crucial first lens for analyzing its content.[span_40](end_span) [span_41](start_span)The Hindu is published by THG Publishing Private Limited, a company whose majority stake (52.04%) is held by Kasturi & Sons Limited.[span_41](end_span) [span_42](start_span)Kasturi & Sons Ltd. is a public limited company, but its ownership is held entirely by the descendants of S. Kasturi Ranga Iyengar, who purchased the newspaper in 1905.[span_42](end_span) [span_43](start_span)This makes it a family-owned institution, a rarity in a media landscape increasingly dominated by large, diversified corporations.[span_43](end_span) [span_44](start_span)Key family members, such as N. Ram and N. Ravi, have historically held powerful positions as both editors and directors on the board, shaping the paper's trajectory for decades.[span_44](end_span) [span_45](start_span)The newspaper's political and ideological alignment is widely recognized as "Centre-left, Secular, Social liberal".[span_45](end_span) [span_46](start_span)It has a long and storied history of acting as a watchdog, often publishing coverage critical of the government of the day.[span_46](end_span) [span_47](start_span)This has been particularly true under the current BJP-led central government, with the paper providing in-depth, critical reporting on contentious issues such as the Rafale defense deal, which involved allegations of government wrongdoing.[span_47](end_span) [span_48](start_span)This established liberal-secular stance would, on the surface, suggest a predisposition to be highly critical of an exercise like the Bihar SIR, which was perceived by the opposition as an attempt to disenfranchise marginalized communities, particularly minorities and the poor.[span_48](end_span) [span_49](start_span)However, the ownership's ideology interacts with its institutional identity in complex ways.[span_49](end_span) [span_50](start_span)As a "newspaper of record," The Hindu is deeply invested in maintaining its reputation for sobriety, accuracy, and institutional respect.[span_50](end_span) [span_51](start_span)This creates a fundamental tension.[span_51](end_span) [span_52](start_span)While its political leanings might align with the opposition's critique of the SIR, its institutional imperative is to engage with constitutional bodies like the ECI with a degree of deference and to report official pronouncements as news.[span_52](end_span) [span_53](start_span)This results in coverage that is cautious, procedural, and avoids the more inflammatory language of "vote theft" used by political actors.[span_53](end_span) [span_54](start_span)The article reports the ECI's data as the central fact of the story, without offering a significant challenge or counter-narrative.[span_54](end_span) [span_55](start_span)This reflects an institutional choice to temper its ideological inclinations in favor of maintaining a veneer of objective, process-based reporting.[span_55](end_span) [span_56](start_span)Furthermore, the very nature of being a long-standing, family-owned legacy institution can foster a form of institutional conservatism.[span_56](end_span) [span_57](start_span)Unlike more agile and aggressive digital-native outlets, a 140-year-old newspaper is often more invested in upholding procedural norms and maintaining formal relationships with state bodies.[span_57](end_span) [span_58](start_span)There is a greater stake in being seen as a responsible member of the establishment, even while being critical of it.[span_58](end_span) [span_59](start_span)This institutional posture can explain the decision to frame the story around the ECI's press release-style data rather than leading with the opposition's more explosive and politically charged claims.[span_59](end_span) [span_60](start_span)The ownership filter, in this case, operates not to push a crude profit-motive, but to balance a liberal ideology with the conservative institutional pressures of being a "newspaper of record," resulting in a cautious and ultimately state-affirming narrative.[span_60](end_span)</p>
-            
-            [span_61](start_span)<h3>The Advertising Filter: The Price of Dissent and the Power of the State[span_61](end_span)</h3>
-            [span_62](start_span)<p>The second filter of the Propaganda Model highlights the reliance of mass media on advertising revenue as a primary source of income.[span_62](end_span) [span_63](start_span)This creates a dynamic where media outlets are reluctant to publish content that might offend their advertisers.[span_63](end_span) [span_64](start_span)While the classic model focuses on corporate advertisers, in the Indian context, the government—both at the central and state levels—is one of the largest and most influential advertisers.[span_64](end_span) [span_65](start_span)Like all major legacy media in India, The Hindu is heavily dependent on advertising revenue to sustain its operations.[span_65](end_span) [span_66](start_span)This revenue comes from a mix of private corporations and government bodies.[span_66](end_span) [span_67](start_span)Government advertising is a particularly significant and politically sensitive revenue stream.[span_67](end_span) [span_68](start_span)It includes legally mandated public notices and large-scale advertisements publicizing government schemes, often featuring the Prime Minister.[span_68](end_span) [span_69](start_span)Crucially, there is direct and documented evidence that the Indian government under Prime Minister Narendra Modi has weaponized this advertising budget to discipline and punish critical media.[span_69](end_span) [span_70](start_span)A 2019 report by Reuters revealed that the Modi administration had frozen all advertising spending with the publishers of the Times of India, The Telegraph, and The Hindu.[span_70](end_span) [span_71](start_span)This move was widely seen as retaliation for their critical coverage.[span_71](end_span) [span_72](start_span)An official from one of the affected groups was quoted stating, "Once you don't toe the government line... the only way they can penalise you (is) to choke your advertising supply".[span_72](end_span) [span_73](start_span)This documented history creates a potent conflict of interest and a chilling effect on editorial independence.[span_73](end_span) [span_74](start_span)The ECI's actions in Bihar were strongly defended by the central government and the ruling BJP.[span_74](end_span) [span_75](start_span)To publish a highly critical piece on the SIR would challenge the narrative of the same government that controls a vital revenue stream.[span_75](end_span) [span_76](start_span)The chosen article's tone must be analyzed in this context; it is conspicuously cautious and uncritical.[span_76](end_span) [span_77](start_span)It functions as a straightforward relay of information from the ECI, presenting the commission's data as objective fact without independent verification or dissenting viewpoints.[span_77](end_span) [span_78](start_span)This can be interpreted as a rational, strategic decision to produce "safe" content that covers the event without provoking the state and jeopardizing revenue.[span_78](end_span) [span_79](start_span)The advertising filter operates as a powerful background condition, shaping the boundaries of acceptable discourse for a media outlet that has been previously penalized for its critical stance.[span_79](end_span) [span_80](start_span)A politically explosive exercise like the Bihar SIR is a sensitive topic.[span_80](end_span) [span_81](start_span)The path of least financial risk is to stick to the official script, a path the article follows meticulously.[span_81](end_span)</p>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.section-title');
+            sections.forEach(section => {
+                section.addEventListener('click', () => {
+                    const content = section.nextElementSibling;
+                    const icon = section.querySelector('svg');
+                    content.classList.toggle('open');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
 
-            [span_82](start_span)<h3>The Sourcing Filter: The Unquestioned Authority of the State[span_82](end_span)</h3>
-            [span_83](start_span)<p>The third filter concerns the media's reliance on information from government, business, and "expert" sources.[span_83](end_span) [span_84](start_span)These sources are credible and provide a steady stream of information, making them attractive to news organizations.[span_84](end_span) [span_85](start_span)This reliance, however, ensures the news narrative is dominated by the perspectives of the powerful.[span_85](end_span) [span_86](start_span)The sourcing pattern in The Hindu's article is a textbook example of this filter.[span_86](end_span) [span_87](start_span)The article's information architecture is constructed almost exclusively from official sources.[span_87](end_span) [span_88](start_span)An analysis reveals a stark hierarchy of voices.[span_88](end_span)</p>
-            
-            <div class="table-container">
-                <table>
-                    [span_89](start_span)<caption>Table 1: Source Amplification and Silencing in The Hindu's SIR Coverage[span_89](end_span)</caption>
-                    <thead>
-                        <tr>
-                            <th>Source Category</th>
-                            <th>Specific Source Mentioned</th>
-                            <th>Voice Status</th>
-                            <th>Analysis of Framing</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>State Institution</td>
-                            <td>Election Commission of India (ECI)</td>
-                            <td>Amplified</td>
-                            <td>Presented as the sole, authoritative, and objective source of all data and facts. Its statements are reported as undisputed truth.</td>
-                        </tr>
-                        <tr>
-                            <td>Political Actors</td>
-                            <td>"Political parties," "booth-level agents"</td>
-                            <td>Referenced (Marginally)</td>
-                            <td>Mentioned generically without naming specific parties. Their actions are presented as minor procedural details, not political opposition.</td>
-                        </tr>
-                        <tr>
-                            <td>Affected Citizens</td>
-                            <td>"Individuals," "electors"</td>
-                            <td>Referenced (Abstractly)</td>
-                            <td>Mentioned only as statistical entities. Their lived experiences, fears, and reasons for filing claims are completely absent.</td>
-                        </tr>
-                        <tr>
-                            <td>Independent Experts</td>
-                            <td>Legal scholars, sociologists, election analysts</td>
-                            <td>Silenced</td>
-                            <td>Completely absent. There is no external expert analysis to contextualize the ECI's numbers or evaluate the process's fairness.</td>
-                        </tr>
-                         <tr>
-                            <td>Civil Society</td>
-                            <td>Activists, NGOs working with marginalized groups</td>
-                            <td>Silenced</td>
-                            <td>Completely absent. The voices of those who work with communities likely to be disenfranchised are not included.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            if (sections.length > 0) {
+                const firstContent = sections[0].nextElementSibling;
+                const firstIcon = sections[0].querySelector('svg');
+                firstContent.classList.add('open');
+                firstIcon.classList.add('rotate-180');
+            }
 
-            [span_90](start_span)<p>The voice of the ECI is not merely amplified; it constitutes the entirety of the article's substantive content.[span_90](end_span) [span_91](start_span)The report functions as
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.scroll-target').forEach(target => {
+                observer.observe(target);
+            });
+        });
+    </script>
+</body>
+</html>
